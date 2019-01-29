@@ -207,7 +207,7 @@ def conSplit(condition):
         con = re.split(regexPattern, condition)
         con = map(str.strip,con)
     except Exception as e:
-        print "Syntax 1"
+        print "Syntax of and/or condition not correct"
         sys.exit()
     return con
 
@@ -275,7 +275,7 @@ def naturalJoin(condition):
                     natjoin.append(sameCol)
 
     except Exception as e:
-        print "Syntax Error 2"
+        print "Syntax Error in operand,operator around each (and/or) operator"
         sys.exit()
 
 def evaluateWhereValueBased(condition):
@@ -308,7 +308,7 @@ def evaluateWhereValueBased(condition):
 				operand[0] = operand[0].replace(operand[0],"tables[i]["+str(lhs)+"]")
 				# print operand[0]
 			else:
-				print "Syntax error 3"
+				print "Syntax error in getting condition in findcol in evalwhervalues"
 				sys.exit()
 
 			t = operand[0],operand[1]
@@ -347,7 +347,7 @@ def evaluateWhereValueBased(condition):
 				res.append(tables[i])
 
 	except Exception as e:
-		print "Syntax Error 4"
+		print "Syntax Error in getting condition in eval format"
 		sys.exit()
 
 	return res
@@ -425,7 +425,7 @@ def queryEvaluation(query):
 	# print queryParts
 	n=len(queryParts)
 	if n<4:
-		print "Syntax error 5"
+		print "Syntax error in query: Query length less than 4 not possible"
 		sys.exit()
 	# print("djhbd")
 	tablenames=""
@@ -474,11 +474,11 @@ def queryEvaluation(query):
 		# sys.exit()
     
 	if len(queryParts)> 5 and where ==0 :
-		print "Syntax error 6"
+		print "Syntax error (Query length without where can't be greater than 5"
 		sys.exit()
 
 	if len(queryParts)== 5 and where ==0 and flag==0:
-		print "Syntax error 7"
+		print "Syntax error (Query length without where and without distinct can't be equal to 5"
 		sys.exit()
 	# print where
 	cols=""
@@ -542,7 +542,7 @@ def queryEvaluation(query):
 			else:
 				ans = 'null'
 		except IndexError as e:
-			print "Syntax error 8"
+			print "Syntax error in getting aggQueryAns"
 
 	if flag == 1:
 		try:
@@ -553,7 +553,7 @@ def queryEvaluation(query):
 					nr.append(r)
 			ret = '\n'.join(nr)
 		except Exception:
-			print "Syntax Error 9"
+			print "Syntax Error in getting distinct row in ans"
 			sys.exit()
 		ans = ret
 
